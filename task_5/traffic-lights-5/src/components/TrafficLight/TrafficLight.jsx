@@ -2,9 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Light from "../Light/Light.jsx";
 import StaticBar from '../StaticBar/StaticBar.jsx';
 import s from "./TrafficLight.module.css";
+import { useParams } from 'react-router-dom';
 
 
 const TrafficLights = (props) => {
+    const params = useParams()
+    const [rotation, setRotation] = useState(params.direction == "gorizontal" ? true : false)
+
+
     const [TrafficLightsData, setTrafficLightsData] = useState([
         {
             id: 1,
@@ -37,16 +42,20 @@ const TrafficLights = (props) => {
         setTrafficLightsData(updatedTrafficLightsData);
     }
 
+    const clickRotation = () => {
+        setRotation(!rotation)
+    }
+
     return (
-        <div>
+        <div className={s.traffic_light_wrapper}>
             <div 
-                className={s.traffic_light + ' ' + (props.gorizontal ? s.gorizontal : s.vertical)} >
+                className={s.traffic_light + ' ' + (rotation ? s.gorizontal : s.vertical)} >
                 {TrafficLightsData.map(lightItem => (
                     <Light lightItem={lightItem} clickLight={clickLight} />
                 ))}
             </div>
             <div className="staticbar">
-                <StaticBar TrafficLightsData={TrafficLightsData} gorizontal="1"/>
+                <StaticBar TrafficLightsData={TrafficLightsData} clickRotation={clickRotation}/>
             </div>
         </div>
     );
