@@ -1,13 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom/client.js';
 import './index.css';
-import App from './App';
+import App from './App.js';
 import RootPage from './Pages/RootPage/RootPage.jsx';
-import Home from './Pages/Home/Home';
-import ErrorPage from './Pages/ErrorPage/ErrorPage';
-import reportWebVitals from './reportWebVitals';
+import Home from './Pages/Home/Home.jsx';
+import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
+import reportWebVitals from './reportWebVitals.js';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import TrafficLights from './components/TrafficLight/TrafficLight';
+import TrafficLights from './components/TrafficLight/TrafficLight.jsx';
 
 const router = createBrowserRouter([
   {
